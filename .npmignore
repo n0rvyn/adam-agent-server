@@ -1,0 +1,22 @@
+# NOTE: dist/ is intentionally NOT excluded here — it is already whitelisted via "files" in package.json.
+# .npmignore exists to prevent .gitignore fallback from excluding web/dist/ (which .gitignore's "dist/" would match).
+src/
+.claude/
+docs/
+tests/
+.env
+.env.*
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+playwright.config.ts
+*.test.ts
+*.spec.ts
+*.log
+*.db
+data/
+workspaces/
+coverage/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json

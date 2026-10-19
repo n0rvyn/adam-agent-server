@@ -1,0 +1,49 @@
+(version 1)
+(deny default)
+
+; Process execution (Claude CLI fork/exec only — no process-info for other processes)
+(allow process-exec*)
+(allow process-fork)
+(allow signal (target self))
+(allow sysctl-read)
+(allow mach*)
+(allow ipc-posix-shm*)
+
+; Accessibility-sensitive primitives are gated by Role OS capabilities.
+; Base profile keeps them denied until the provider appends allow rules.
+(deny mach-priv-host-port)
+(deny mach-task-name)
+(deny mach-lookup (local-name "com.apple.axserver"))
+
+; ===== READ: broadly allowed =====
+; Claude CLI needs to read system libraries, its own config, node_modules, etc.
+; The sandbox's primary job is WRITE restriction, not read restriction.
+(allow file-read*)
+
+; ===== WRITE: restricted to declared paths =====
+; Only these paths can be written to. Everything else is denied.
+
+; Device writes (pty allocation, /dev/null, /dev/tty — NOT raw disk devices)
+(allow file-write* (literal "/dev/null"))
+(allow file-write* (literal "/dev/tty"))
+(allow file-write* (regex #"^/dev/pty.*"))
+(allow file-write* (regex #"^/dev/ttys.*"))
+
+; Temp directories (role-specific; injected at spawn time)
+; TMPDIR is set to per-spawn tmpdir so os.tmpdir() inside sandbox returns the restricted dir.
+; CLAUDE_CODE_TMPDIR env var redirects CLI session storage to this same dir (avoids /private/tmp/claude-{uid}/).
+(allow file-write* (subpath (param "TMPDIR")))
+
+; Claude Code config dir (CLI writes session data, settings cache, .claude.json)
+; CLAUDE_CONFIG_DIR env var redirects the CLI's config root, including ~/.claude.json
+(allow file-write* (subpath (param "CLAUDE_CONFIG")))
+
+; User cache (npm/node cache, various tools)
+(allow file-write* (subpath (param "HOME_CACHE")))
+
+; Network: allow (agent needs API access)
+(allow network*)
+
+; ===== Dynamic per-Role WRITE paths (injected at spawn time) =====
+; RW paths: (allow file-write* (subpath "{path}"))
+; RO paths: no file-write* rule → writes blocked by (deny default)

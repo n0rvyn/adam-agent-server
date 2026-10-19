@@ -1,0 +1,17 @@
+From: MAILER-DAEMON@smtp.qq.com
+To: adam@example.org
+Subject: Mail Delivery Failure
+Date: Tue, 19 May 2026 08:00:00 +0800
+Message-ID: <bounce-qq-001@smtp.qq.com>
+
+This is a delivery status report.
+
+Your message could not be delivered to the following recipient:
+foo@qq.com
+
+The mail server responded:
+552 5.3.4 Message size 20971520 exceeds fixed maximum message size
+
+Final-Recipient: rfc822; foo@qq.com
+Action: failed
+Status: 5.3.4

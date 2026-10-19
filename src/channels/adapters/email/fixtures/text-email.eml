@@ -1,0 +1,10 @@
+Message-ID: <plain-1@example.com>
+Date: Wed, 29 Apr 2026 10:00:00 +0000
+From: Test.User@Example.COM
+To: adam@example.com
+Subject: Plain subject
+Content-Type: text/plain; charset=utf-8
+
+Hello Adam,
+
+This is a plain text email.

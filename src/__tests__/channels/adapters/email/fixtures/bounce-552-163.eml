@@ -1,0 +1,17 @@
+From: MAILER-DAEMON@163.com
+To: adam@example.org
+Subject: Undeliverable: Morning Podcast
+Date: Tue, 19 May 2026 08:01:00 +0800
+Message-ID: <bounce-163-001@163.com>
+
+Mail Delivery Subsystem
+
+Your message was not delivered to:
+03500408@163.com
+
+The following SMTP error was returned:
+552 5.3.4 Message size 52428800 exceeds limit
+
+Final-Recipient: rfc822; 03500408@163.com
+Action: failed
+Status: 5.3.4

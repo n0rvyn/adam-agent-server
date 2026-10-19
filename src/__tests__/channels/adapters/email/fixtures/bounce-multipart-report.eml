@@ -1,0 +1,23 @@
+From: MAILER-DAEMON@icloud.com
+To: adam@example.org
+Subject: Delivery Status Notification
+Date: Tue, 19 May 2026 08:02:00 +0800
+Message-ID: <bounce-icloud-001@icloud.com>
+Content-Type: multipart/report; report-type=delivery-status; boundary="boundary-dsn-001"
+
+--boundary-dsn-001
+Content-Type: text/plain; charset="utf-8"
+
+Your message was not delivered.
+
+--boundary-dsn-001
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; icloud.com
+
+Final-Recipient: rfc822; zhaotao924@icloud.com
+Action: failed
+Status: 5.3.4
+Diagnostic-Code: smtp; 552 5.3.4 Message size 20971520 exceeds fixed maximum message size
+
+--boundary-dsn-001--

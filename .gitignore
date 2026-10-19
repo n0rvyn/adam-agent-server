@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Runtime data
+data/
+workspaces/
+*.log
+coverage/
+web/test-results/
+/workspaces/
+
+# Environment (never commit credentials)
+.env
+.env.*
+!.env.example
+*.do_not_commit
+adam.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Obsidian
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+docs/06-plans/
+docs/reports/
+.remember/
+task-output/
+.npm.env
